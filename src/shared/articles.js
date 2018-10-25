@@ -59,5 +59,45 @@ export const ARTICLES =
                     date: '2018-10-24T17:57:28.556094Z'
                 },
             ]
+        },
+        {
+            id: 3,
+            label: 'Communism In China',
+            title: 'Nine Commentaries on the Communist Party',
+            author: 'Epoch Times',
+            image: '/assets/images/nine-commentaries-110px-110px.jpg',
+            category: 'on-communism',
+            abstract: 'As a famous Chinese poem goes, \“Deeply I sigh in vain for the falling flowers.\” The end is near for the communist regime, which is barely struggling to survive. The days before its collapse are numbered. The Epoch Times believes the time is now ripe, before the CCP’s total demise, for a comprehensive look back, in order to fully expose how this largest cult in history has embodied the wickedness of all times and places.',                
+            abstractAuthor: 'Epoch Times',
+            link: 'http://www.ninecommentaries.com/',
+            comments: [
+                {
+                    id: 0,
+                    rating: 5,
+                    comment: 'History and politics classes teach students what wrongful deeds Communism commits. The is the first book to ever answer the question, what is the nature of Communism.',
+                    author: 'Jade Do',
+                    date: '2018-25-24T19:57:28.556094Z'
+                },
+            ]
+        },
+        {
+            id: 4,
+            label: 'Communism In The World',
+            title: 'How the Specter of Communism Is Ruling Our World',
+            author: 'Epoch Times, The Editorial Team of "The Nine Commentaries on the Communist Party',
+            image: '/assets/images/nine-commentaries-110px-110px.jpg',
+            category: 'on-communism',
+            abstract: 'There are the outright communist regimes like China, North Korea, Cuba, and Vietnam; there are the former Soviet Union and Eastern European countries, where communist ideology and customs still exert a significant influence; there are the African and South American countries, which attempt socialism under the banner of democracy and republicanism—and then there are the nations of Europe and North America, whose body politics have become host to communist influences, without people even realizing it.',                
+            abstractAuthor: 'Epoch Times',
+            link: 'https://www.theepochtimes.com/how-the-specter-of-communism-is-ruling-our-world-introduction_2547882.html',
+            comments: [
+                {
+                    id: 0,
+                    rating: 4,
+                    comment: 'Another riveting book examining the nature, the objective and the goal of Communism. How do we escape from it?',
+                    author: 'Jade Do',
+                    date: '2018-10-25T19:37:18.556394Z'
+                },
+            ]
         }
 ]

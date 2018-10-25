@@ -4,6 +4,7 @@ import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import CommunismInUSAcademia from './CommunismInUSAcademiaComponent';
+import CommentDetails from './CommentDetailsComponent';
 import { ARTICLES } from '../shared/articles';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
@@ -12,7 +13,12 @@ class Main extends Component {
         super(props);
         this.state = {
             articles: ARTICLES,
+            selectedArticleId: null
         };
+    }
+
+    onArticleSelect(articleId){
+        this.setState({selectedArticleId: articleId});
     }
 
     render() {
@@ -28,7 +34,9 @@ class Main extends Component {
                     <Route path="/home" component={HomePage}/>
                     <Redirect to="/home"></Redirect>
                 </Switch>
-                <CommunismInUSAcademia articles={this.state.articles}></CommunismInUSAcademia>
+                <CommunismInUSAcademia articles={this.state.articles}
+                    onClick={(articleId) => this.onArticleSelect(articleId)}></CommunismInUSAcademia>
+                <CommentDetails selectedArticle={this.state.articles.filter((article) => article.id == this.state.selectedArticleId)[0]}></CommentDetails>      
                 <Footer/>
             </div>
         )
