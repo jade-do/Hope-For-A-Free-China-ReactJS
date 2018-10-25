@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import CommunismInUSAcademia from './CommunismInUSAcademiaComponent';
+import Header from './HeaderComponent';
+import Footer from './FooterComponent';
 import { ARTICLES } from '../shared/articles';
+
 
 class Main extends Component {
     constructor(props) {
@@ -14,12 +17,9 @@ class Main extends Component {
     render() {
         return (
             <div>
-                <Navbar dark color="primary">
-                    <div className="container">
-                        <NavbarBrand href="/">China UnderWatch</NavbarBrand>
-                    </div>
-                </Navbar>
+                <Header/>
                 <CommunismInUSAcademia articles={this.state.articles}></CommunismInUSAcademia>
+                <Footer/>
             </div>
         )
     }
