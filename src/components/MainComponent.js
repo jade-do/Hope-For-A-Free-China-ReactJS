@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand } from 'reactstrap';
-import CommunismInUSAcademia from './CommunismInUSAcademiaComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
+import Home from './HomeComponent';
+import CommunismInUSAcademia from './CommunismInUSAcademiaComponent';
 import { ARTICLES } from '../shared/articles';
-
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 class Main extends Component {
     constructor(props) {
@@ -15,9 +16,18 @@ class Main extends Component {
     }
 
     render() {
+        const HomePage = () => {
+            return(
+                <Home/>
+            )
+        }
         return (
             <div>
                 <Header/>
+                <Switch>
+                    <Route path="/home" component={HomePage}/>
+                    <Redirect to="/home"></Redirect>
+                </Switch>
                 <CommunismInUSAcademia articles={this.state.articles}></CommunismInUSAcademia>
                 <Footer/>
             </div>
