@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-import CommunismInUSAcademia from './components/CommunismInUSAcademiaComponent'
 import logo from './logo.svg';
 import './App.css';
-import {Navbar, NavbarBrand} from 'reactstrap';
+import Main from './components/MainComponent';
 
 class App extends Component {
+
+  constructor(props){
+    super(props);
+  }
+
   render() {
     return (
       <div className="App">
-        <Navbar dark color="primary">
-          <div className="container">
-            <NavbarBrand href="/">China Underwatch</NavbarBrand>
-          </div>
-        </Navbar>
-        <CommunismInUSAcademia/>
+          <Main/>
       </div>
     );
   }
