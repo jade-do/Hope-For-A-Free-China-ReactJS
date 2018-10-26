@@ -29,16 +29,22 @@ class Main extends Component {
         const HomePage = () => {
             return(
                 <Home
-                    articles={this.state.articles.filter((article) => article.category === "on-communism")}
-                    onClick ={(articleId) => this.onArticleSelect(articleId)}/>
+                    articles={this.state.articles.filter((article) => article.category === "on-communism")}/>
             )
         }
 
         const CommunismInUSAcademiaPage = () => {
             return (
                 <CommunismInUSAcademia
-                    articles = {this.state.articles.filter((article) => article.label === 'communism-in-us-academia')}
+                    articles = {this.state.articles.filter((article) => article.category === 'communism-in-us-academia')}
                 />
+            )
+        }
+
+        const CommentDetailsPage = ({match}) => {
+            return (
+                <CommentDetails selectedArticle={this.state.articles.filter((article) => article.id === parseInt(match.params.articleId, 10))[0]}
+                    comments={this.state.comments.filter((comment) => comment.articleId == parseInt(match.params.articleId,10))}></CommentDetails>
             )
         }
         return (
@@ -46,13 +52,11 @@ class Main extends Component {
                 <Header/>
                 <Switch>
                     <Route path="/home" component={HomePage}/>
-                    <Route exactpath="/communism-in-us-academia" component={CommunismInUSAcademiaPage}></Route>
-                    <Route exactpath="/contactus" component={Contact}/>
+                    <Route exact path="/communism-in-us-academia" component={CommunismInUSAcademiaPage}></Route>
+                    <Route path="/communism-in-us-academia/:articleId" component={CommentDetailsPage}/>
+                    <Route exact path="/contactus" component={Contact}/>
                     <Redirect to="/home"></Redirect>
                 </Switch>
-                <CommunismInUSAcademia articles={this.state.articles}
-                    onClick={(articleId) => this.onArticleSelect(articleId)}></CommunismInUSAcademia>
-                <CommentDetails selectedArticle={this.state.articles.filter((article) => article.id == this.state.selectedArticleId)[0]}></CommentDetails>      
                 <Footer/>
             </div>
         )

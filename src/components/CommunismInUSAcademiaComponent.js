@@ -1,23 +1,24 @@
 import React, {Component} from 'react';
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Media, Button } from 'reactstrap';
-import CommentDetails from './CommentDetailsComponent';
+import {Media, Button } from 'reactstrap';
+import {Link} from 'react-router-dom';
 
-    function RenderArticleItem({article, onClick}) {
+    function RenderArticleItem({article}) {
         return (
             <div key={article.id} className="col-12 mt-5">
                 <Media heading> {article.label} </Media>
                 <Media tag="li">
-                    <Media left middle>
-                            <Media object src={article.image} alt={article.title}></Media>
+                    <Media left middle className="col-12 col-lg">                                
+                        <Media object src={article.image} alt={article.title}></Media>
                     </Media>
-                    <Media body className="ml-5">
+                    <Media body className="col-12 col-lg">
                         <Media heading>{article.title}</Media>
                         <Media heading><em>- {article.author}</em></Media>
                         <p>"{article.abstract}"</p>
-                        <p><em>- {article.abstractAuthor}</em></p>
+                        <p><em>- {article.abstractAuthor}</em></p>                            
                         <Button size="large" color="danger" target="_blank" href={article.link}> Read More </Button>
-                        <Button size="large" color="success"
-                            onClick={()=> onClick(article.id)}> Comments </Button>
+                        <Link to={`/communism-in-us-academia/${article.id}`}>                          
+                        <Button size="large" color="success"> Comments </Button>
+                        </Link>
                     </Media>
                 </Media>
             </div>

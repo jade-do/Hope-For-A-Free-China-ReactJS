@@ -1,14 +1,16 @@
 import React from 'react';
-import {Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
+import { Button } from 'reactstrap';
+import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
 
 function RenderCard({item}){
   return (
     <Card>
-      <CardImg src={item.image} alt={item.title}/>
+      <CardImg href={item.link} target="_blank" src={item.image} alt={item.title}/>
       <CardBody>
         <CardTitle>{item.title}</CardTitle>
         {item.author ? <CardSubtitle>{item.author}</CardSubtitle> : null}
         <CardText>{item.abstract}</CardText>
+        <Button size="small" color="info" href={item.link} target="_blank">Learn More</Button>
       </CardBody>
 
     </Card>
