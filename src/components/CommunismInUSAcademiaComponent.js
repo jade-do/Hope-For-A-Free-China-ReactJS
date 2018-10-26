@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Media, Button } from 'reactstrap';
+import {Media, Button, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
 import {Link} from 'react-router-dom';
 
     function RenderArticleItem({article}) {

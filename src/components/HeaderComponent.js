@@ -34,9 +34,6 @@ class Header extends Component {
                             <NavLink className="nav-link" to='/communism-in-us-academia'><span className="fa fa-star-half-full fa-lg"></span> Communism in US Academia</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className="nav-link"  to='/technology-theft'><span className="fa fa-star-half-full fa-lg"></span> Technology Theft</NavLink>
-                        </NavItem>
-                        <NavItem>
                             <NavLink className="nav-link"  to='/human-rights-abuse'><span className="fa fa-star-half-full fa-lg"></span> Human Rights Abuse</NavLink>
                         </NavItem>
                         <NavItem>

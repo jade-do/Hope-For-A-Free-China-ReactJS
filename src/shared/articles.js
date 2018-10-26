@@ -65,5 +65,16 @@ export const ARTICLES =
             abstract: 'Owing its name to the Chinese “scar literature” that emerged during the late 1970’s following the death of Mao Zedong, Chinese “scar cinema” similarly grapples with the harsh realities of the cultural campaigns that affected every life in Mao-era China.  Often traversing the revolutionary decades through the narrative of one individual or family, the films inject an intensely personal element to the time period, challenging the political movements and their harrowing consequences with tales that highlight the shared humanity of all involved.',
             abstractAuthor: 'unknown',
             link: 'https://modernchinesemedia.wordpress.com/2016/12/14/chinese-scar-cinema/'
+        },
+        {
+            id: 6,
+            label: 'Human Rights Abuse On The Land Of Freedom',
+            title: 'When All Else Fails : Threats​',
+            author: 'Richard C. Morais',
+            image: '/assets/images/human-rights-abuse-on-the-land-of-freedom-3.jpg',
+            category: 'human-rights-abuse',
+            abstract: 'Peter Yuan Li--a key figure in the Falun Gong\'s technologically sophisticated attempt to undermine the Chinese Communist Party--was brutally attacked and beaten in his home in Duluth, Ga., as Forbes was going to press with its cover story on how the spiritual movement is penetrating the Chinese government\'s hi-tech censorship.',   
+            abstractAuthor: 'When All Else Fails: Threats, - Forbes',
+            link: 'https://www.forbes.com/2006/02/10/china-falun-gong_0210falungong.html#40da815253bf​'
         }
 ]
