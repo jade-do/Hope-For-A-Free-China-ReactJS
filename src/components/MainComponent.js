@@ -7,19 +7,20 @@ import CommunismInUSAcademia from './CommunismInUSAcademiaComponent';
 import CommentDetails from './CommentDetailsComponent';
 import HumanRightsAbuse from './HumanRightsAbuseComponent';
 import Contact from './ContactComponent';
-import { ARTICLES } from '../shared/articles';
-import { COMMENTS } from '../shared/comments';
-import { HUMANRIGHTSMEDIA } from '../shared/humanrightsmedia';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => {
+    return {
+      articles: state.articles,
+      comments: state.comments,
+      humanRightsMedia: state.humanRightsMedia
+    }
+}
 
 class Main extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            articles: ARTICLES,
-            comments: COMMENTS,
-            humanRightsMedia: HUMANRIGHTSMEDIA
-        };
     }
 
     onArticleSelect(articleId){
@@ -31,14 +32,14 @@ class Main extends Component {
         const HomePage = () => {
             return(
                 <Home
-                    articles={this.state.articles.filter((article) => article.category === "on-communism")}/>
+                    articles={this.props.articles.filter((article) => article.category === "on-communism")}/>
             )
         }
 
         const CommunismInUSAcademiaPage = () => {
             return (
                 <CommunismInUSAcademia
-                    articles = {this.state.articles.filter((article) => article.category === 'communism-in-us-academia')}
+                    articles = {this.props.articles.filter((article) => article.category === 'communism-in-us-academia')}
                 />
             )
         }
@@ -46,15 +47,15 @@ class Main extends Component {
         const CommentDetailsPage = ({match}) => {
             return (
                 <CommentDetails selectedArticle={this.state.articles.filter((article) => article.id === parseInt(match.params.articleId, 10))[0]}
-                    comments={this.state.comments.filter((comment) => comment.articleId == parseInt(match.params.articleId,10))}></CommentDetails>
+                    comments={this.props.comments.filter((comment) => comment.articleId == parseInt(match.params.articleId,10))}></CommentDetails>
             )
         }
 
         const HumanRightsAbusePage = () => {
-            return (
+            return ( 
                 <HumanRightsAbuse
-                    mediaList={this.state.humanRightsMedia}
-                    article={this.state.articles.filter((article) => article.category === 'human-rights-abuse' )[0]}>
+                    mediaList={this.props.humanRightsMedia}
+                    article={this.props.articles.filter((article) => article.category === 'human-rights-abuse' )[0]}>
                 </HumanRightsAbuse>
             )
         }
@@ -75,4 +76,4 @@ class Main extends Component {
     }
 }
 
-export default Main;
+export default withRouter(connect(mapStateToProps)(Main));
