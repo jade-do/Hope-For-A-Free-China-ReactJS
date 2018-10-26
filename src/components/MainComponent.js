@@ -5,7 +5,9 @@ import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import CommunismInUSAcademia from './CommunismInUSAcademiaComponent';
 import CommentDetails from './CommentDetailsComponent';
+import Contact from './ContactComponent';
 import { ARTICLES } from '../shared/articles';
+import { COMMENTS } from '../shared/comments';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 class Main extends Component {
@@ -13,6 +15,7 @@ class Main extends Component {
         super(props);
         this.state = {
             articles: ARTICLES,
+            comments: COMMENTS,
             selectedArticleId: null
         };
     }
@@ -21,10 +24,21 @@ class Main extends Component {
         this.setState({selectedArticleId: articleId});
     }
 
+
     render() {
         const HomePage = () => {
             return(
-                <Home/>
+                <Home
+                    articles={this.state.articles.filter((article) => article.category === "on-communism")}
+                    onClick ={(articleId) => this.onArticleSelect(articleId)}/>
+            )
+        }
+
+        const CommunismInUSAcademiaPage = () => {
+            return (
+                <CommunismInUSAcademia
+                    articles = {this.state.articles.filter((article) => article.label === 'communism-in-us-academia')}
+                />
             )
         }
         return (
@@ -32,6 +46,8 @@ class Main extends Component {
                 <Header/>
                 <Switch>
                     <Route path="/home" component={HomePage}/>
+                    <Route exactpath="/communism-in-us-academia" component={CommunismInUSAcademiaPage}></Route>
+                    <Route exactpath="/contactus" component={Contact}/>
                     <Redirect to="/home"></Redirect>
                 </Switch>
                 <CommunismInUSAcademia articles={this.state.articles}
