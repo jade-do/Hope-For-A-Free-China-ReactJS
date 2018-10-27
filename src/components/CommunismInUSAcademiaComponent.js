@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Media, Button, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
 import {Link} from 'react-router-dom';
 import { Loading } from './LoadingComponent';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
     function RenderArticleItem({article}) {
         return (
