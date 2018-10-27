@@ -7,7 +7,7 @@ export const HUMANRIGHTSMEDIA = [
     },
     {
         id: 1, 
-        image: '/assets/images/human-rights-abuse-on-the-land-of-freedom-9.jpeg',
+        image: '/assets/images/human-rights-abuse-on-the-land-of-freedom-9.jpg',
         caption: 'Re-education camps in China\'s \'no-rights zone\' for Muslims',
         src: 'Xinjiang Explainer | SupChina'
     },

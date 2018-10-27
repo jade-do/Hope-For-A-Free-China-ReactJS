@@ -1,19 +1,20 @@
-import React, {Component} from 'react';
-import {Media, Button, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Media, Button, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link} from 'react-router-dom';
 import { Loading } from './LoadingComponent';
 import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
     function RenderArticleItem({article}) {
         return (
             <div key={article.id} className="col-12 mt-5">
-                <Media heading> {article.label} </Media>
+            
+                <Media heading> <b>{article.label} </b></Media>
                 <Media tag="li">
                     <Media left middle className="col-12 col-lg">                                
                         <Media object src={article.image} alt={article.title}></Media>
                     </Media>
                     <Media body className="col-12 col-lg">
-                        <Media heading>{article.title}</Media>
+                        <Media heading><b>{article.title}</b></Media>
                         <Media heading><em>- {article.author}</em></Media>
                         <p>"{article.abstract}"</p>
                         <p><em>- {article.abstractAuthor}</em></p>   
@@ -59,6 +60,16 @@ import { FadeTransform, Fade, Stagger } from 'react-animation-components';
         } else if (news_list != null) {
             return(
                 <div className="container">
+                    <div className="row">
+                        <Breadcrumb>
+                            <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
+                            <BreadcrumbItem active>Communism In U.S. Academia</BreadcrumbItem>
+                        </Breadcrumb>
+                        <div className="col-12">
+                            <h3>Communism In U.S. Academia</h3>
+                            <hr/>
+                        </div>
+                        </div>
                     <div className="row">
                         <Media list>
                             {news_list}

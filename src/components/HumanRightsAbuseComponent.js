@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
-import {Card, CardImg, CardText, CardBody, CardTitle, 
-    CardSubtitle, Carousel, CarouselItem, CarouselControl, 
+import { Breadcrumb, BreadcrumbItem, Carousel, CarouselItem, CarouselControl, 
     CarouselIndicators, CarouselCaption} from 'reactstrap';
 import { Loading } from './LoadingComponent';
+import {Link} from 'react-router-dom';
   
   class HumanRightsAbuse extends Component {
     constructor(props) {
@@ -62,7 +62,16 @@ import { Loading } from './LoadingComponent';
     
             <div className="container">
                 <div className="row">
-
+                  <Breadcrumb>
+                    <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
+                    <BreadcrumbItem active>Human Rights Abuse on People with Sprituality</BreadcrumbItem>
+                 </Breadcrumb>
+                  <div className="col-12">
+                    <h3>Human Rights Abuse on People with Sprituality</h3>
+                    <hr/>
+                  </div>
+                </div>
+                <div className="row">
                 <div className="col-12 col-md">
                     <Carousel
                         activeIndex={activeIndex}

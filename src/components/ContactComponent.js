@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Breadcrumb, BreadcrumbItem,
     Button, Row, Col, Label } from 'reactstrap';
 import { Control, Form, LocalForm, Errors, actions } from 'react-redux-form';
-
+import { Link } from 'react-router-dom';
 class Contact extends Component {
     constructor(props) {
         super(props);
@@ -83,6 +83,16 @@ class Contact extends Component {
 
     return(
         <div className="container">
+            <div className="row">
+                <Breadcrumb>
+                    <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
+                    <BreadcrumbItem active>Contact Us</BreadcrumbItem>
+                </Breadcrumb>
+                <div className="col-12">
+                    <h3>Contact Us</h3>
+                    <hr/>
+                </div>
+            </div>
             <div className="row row-content">
                 <div className="col-12">
                 <h3>Location Information</h3>

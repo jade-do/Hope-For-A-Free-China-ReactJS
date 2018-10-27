@@ -69,14 +69,10 @@ const CommentDetails = (props) => {
                             {props.selectedArticle.label}
                         </BreadcrumbItem>
                     </Breadcrumb>
-                    <div className="col-12">
-                        <h3>{props.selectedArticle.title}</h3>
-                    </div>
-
                 </div>
                 <div className="row">
                     <div key={props.selectedArticle.id} className="col-12 mt-5 m-5">
-                        <h2><b>{props.selectedArticle.label}</b></h2>
+                        <h2><b>{props.selectedArticle.title}</b></h2>
                         <Media tag="li">
                             <RenderArticle selectedArticle={props.selectedArticle}></RenderArticle>                   
                             <RenderComments comments={props.comments} articleId={props.selectedArticle.id} addComment={props.addComment}></RenderComments>
