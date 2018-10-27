@@ -7,9 +7,10 @@ import CommunismInUSAcademia from './CommunismInUSAcademiaComponent';
 import CommentDetails from './CommentDetailsComponent';
 import HumanRightsAbuse from './HumanRightsAbuseComponent';
 import Contact from './ContactComponent';
-import { addComment } from '../redux/ActionCreators';
+import { addComment, fetchArticles } from '../redux/ActionCreators';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { actions } from 'react-redux-form';
 
 const mapStateToProps = state => {
     return {
@@ -20,12 +21,19 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    addComment: (articleId, rating, author, comment) => dispatch(addComment(articleId, rating, author, comment))
+    addComment: (articleId, rating, author, comment) => dispatch(addComment(articleId, rating, author, comment)),
+    fetchArticles: () => { dispatch(fetchArticles())},
+    resetFeedbackForm: () => { dispatch(actions.reset('feedback'))},
 });
+
 
 class Main extends Component {
     constructor(props) {
         super(props);
+    }
+
+    componentDidMount() {
+        this.props.fetchArticles();
     }
 
     onArticleSelect(articleId){
@@ -37,21 +45,27 @@ class Main extends Component {
         const HomePage = () => {
             return(
                 <Home
-                    articles={this.props.articles.filter((article) => article.category === "on-communism")}/>
+                    articles={this.props.articles.articles.filter((article) => article.category === "on-communism")}
+                    articlesLoading={this.props.articles.isLoading}
+                    articlesErrMess={this.props.articles.errMess}/>
             )
         }
 
         const CommunismInUSAcademiaPage = () => {
             return (
                 <CommunismInUSAcademia
-                    articles = {this.props.articles.filter((article) => article.category === 'communism-in-us-academia')}
+                    articles = {this.props.articles.articles.filter((article) => article.category === 'communism-in-us-academia')}
+                    isLoading={this.props.articles.isLoading}
+                    errMess={this.props.articles.errMess}
                 />
             )
         }
 
         const CommentDetailsPage = ({match}) => {
             return (
-                <CommentDetails selectedArticle={this.props.articles.filter((article) => article.id === parseInt(match.params.articleId, 10))[0]}
+                <CommentDetails selectedArticle={this.props.articles.articles.filter((article) => article.id === parseInt(match.params.articleId, 10))[0]}
+                    isLoading={this.props.articles.isLoading}
+                    errMess={this.props.articles.errMess}
                     comments={this.props.comments.filter((comment) => comment.articleId == parseInt(match.params.articleId,10))}
                     addComment={this.props.addComment}></CommentDetails>
             )
@@ -73,7 +87,7 @@ class Main extends Component {
                     <Route exact path="/communism-in-us-academia" component={CommunismInUSAcademiaPage}></Route>
                     <Route path="/communism-in-us-academia/:articleId" component={CommentDetailsPage}/>
                     <Route exact path="/human-rights-abuse" component ={HumanRightsAbusePage}/>
-                    <Route exact path="/contact-us" component={() => <Contact></Contact>}/>
+                    <Route exact path="/contact-us" component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm}></Contact>}/>
                     <Redirect to="/home"></Redirect>
                 </Switch>
                 <Footer/>

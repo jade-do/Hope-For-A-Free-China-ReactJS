@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Media, Button, Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
 import {Link} from 'react-router-dom';
+import { Loading } from './LoadingComponent';
 
     function RenderArticleItem({article}) {
         return (
@@ -34,19 +35,38 @@ import {Link} from 'react-router-dom';
     const CommunismInUSAcademia = (props) => {
         const news_list = props.articles.map((article) => {
             return (
-                <RenderArticleItem article={article} onClick={props.onClick}></RenderArticleItem>
+                <RenderArticleItem article={article}></RenderArticleItem>
             )
         });
 
-        return(
-            <div className="container">
-                <div className="row">
-                    <Media list>
-                        {news_list}
-                    </Media>
+        if (props.isLoading){
+            return (
+                <div className="container">
+                    <div className="row">
+                        <Loading/>
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        } else if (props.errMess) {
+            return(
+                <div className="container">
+                    <div className="row">
+                        <h4>{props.errMess}</h4>
+                    </div>
+                </div>        
+            )
+        } else if (news_list != null) {
+            return(
+                <div className="container">
+                    <div className="row">
+                        <Media list>
+                            {news_list}
+                        </Media>
+                    </div>
+                </div>
+            )
+        }
+
     }
 
 

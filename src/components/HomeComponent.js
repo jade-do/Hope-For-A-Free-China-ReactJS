@@ -1,38 +1,63 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
+import { Loading } from './LoadingComponent';
 
-function RenderCard({item}){
-  return (
-    <Card>
-      <CardImg href={item.link} target="_blank" src={item.image} alt={item.title}/>
-      <CardBody>
-        <CardTitle>{item.title}</CardTitle>
-        {item.author ? <CardSubtitle>{item.author}</CardSubtitle> : null}
-        <CardText>{item.abstract}</CardText>
-        <Button size="small" color="info" href={item.link} target="_blank">Learn More</Button>
-      </CardBody>
+function RenderCards({articlesList, isLoading, errMess}){
+  if (isLoading){
+    return (
+      <div className="col-12">
+        <Loading/>
+      </div>
+    )
+  } else if (errMess) {
+    return(
+      <div className="col-12">
+        <h4>{errMess}</h4>
+      </div>
+    )
+  } else if (articlesList != null) {
+    const myArticlesList = articlesList.map((oneArticle) => {
+      return (
+        <div className="col-12 col-md m-1">
+        <Card>
+          <CardImg href={oneArticle.link} target="_blank" src={oneArticle.image} alt={oneArticle.title}/>
+          <CardBody>
+            <CardTitle>{oneArticle.title}</CardTitle>
+            {oneArticle.author ? <CardSubtitle>{oneArticle.author}</CardSubtitle> : null}
+            <CardText>{oneArticle.abstract}</CardText>
+            <Button size="small" color="info" href={oneArticle.link} target="_blank">Learn More</Button>
+          </CardBody>
+        </Card>
+        </div>
 
-    </Card>
-  )
-}
+      )
+    });
+
+    return(
+      <div className="row align-items-start">
+        {myArticlesList}
+        </div>
+    )
+    }
+  }
 
 function Home(props) {
 
-    const articles = props.articles.map((oneArticle) => {
-      return (
-        <div className="col-12 col-md m-1">
-            <RenderCard item={oneArticle}/>
-        </div>      
-      )
-    })
+    // const articles = props.articles.map((oneArticle) => {
+    //   return (
+    //     <div className="col-12 col-md m-1">
+    //         <RenderCard item={oneArticle} isLoading={props.articlesLoading} errMess={props.articlesErrMess}/>
+    //     </div>            
+    //   )
+    // })
+
     return(
       <div className="container">
-        <div className="row align-items-start">
-          {articles}
-        </div>
+          <RenderCards articlesList={props.articles} isLoading={props.articlesLoading} errMess={props.articlesErrMess}></RenderCards>
+          {/* {articles} */}
       </div>
-    );
+    ) ;
 }
 
 export default Home; 
