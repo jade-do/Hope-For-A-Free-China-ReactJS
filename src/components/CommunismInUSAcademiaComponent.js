@@ -14,11 +14,17 @@ import {Link} from 'react-router-dom';
                         <Media heading>{article.title}</Media>
                         <Media heading><em>- {article.author}</em></Media>
                         <p>"{article.abstract}"</p>
-                        <p><em>- {article.abstractAuthor}</em></p>                            
-                        <Button size="large" color="danger" target="_blank" href={article.link}> Read More </Button>
-                        <Link to={`/communism-in-us-academia/${article.id}`}>                          
-                        <Button size="large" color="success"> Comments </Button>
-                        </Link>
+                        <p><em>- {article.abstractAuthor}</em></p>   
+                        <div className="row">
+                            <div className="col-3 mr-2">
+                            <Button size="large" color="danger" target="_blank" href={article.link}> Read More </Button>                            
+                            </div>
+                            <div className="col-3 mr-2">
+                            <Link to={`/communism-in-us-academia/${article.id}`}>                          
+                            <Button size="large" color="success"> Comments </Button>
+                            </Link>
+                            </div>
+                        </div>
                     </Media>
                 </Media>
             </div>

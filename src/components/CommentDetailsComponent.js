@@ -1,6 +1,7 @@
 import React from 'react';
 import { Media, Button, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import CommentForm from './CommentFormComponent';
 
 function RenderArticle({selectedArticle}) {
     return (
@@ -12,7 +13,7 @@ function RenderArticle({selectedArticle}) {
     )
 }
 
-function RenderComments({comments, articleId}) {
+function RenderComments({comments, articleId, addComment}) {
         if (comments != null){
             const theComments = comments.map((oneComment) => {
                 return(
@@ -31,7 +32,7 @@ function RenderComments({comments, articleId}) {
                     <React.Fragment>
                         {theComments}
                     </React.Fragment>
-                    <Button size="large" color="success"> Add Comment </Button>
+                    <CommentForm articleId={articleId} addComment={addComment} />
                 </Media>
 
             )
@@ -61,7 +62,7 @@ const CommentDetails = (props) => {
                         <h2><b>{props.selectedArticle.label}</b></h2>
                         <Media tag="li">
                             <RenderArticle selectedArticle={props.selectedArticle}></RenderArticle>                   
-                            <RenderComments comments={props.comments} articleId={props.selectedArticle.id}></RenderComments>
+                            <RenderComments comments={props.comments} articleId={props.selectedArticle.id} addComment={props.addComment}></RenderComments>
                         </Media>
                     </div>                
                 </div>

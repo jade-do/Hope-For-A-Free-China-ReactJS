@@ -7,6 +7,7 @@ import CommunismInUSAcademia from './CommunismInUSAcademiaComponent';
 import CommentDetails from './CommentDetailsComponent';
 import HumanRightsAbuse from './HumanRightsAbuseComponent';
 import Contact from './ContactComponent';
+import { addComment } from '../redux/ActionCreators';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -17,6 +18,10 @@ const mapStateToProps = state => {
       humanRightsMedia: state.humanRightsMedia
     }
 }
+
+const mapDispatchToProps = dispatch => ({
+    addComment: (articleId, rating, author, comment) => dispatch(addComment(articleId, rating, author, comment))
+});
 
 class Main extends Component {
     constructor(props) {
@@ -46,8 +51,9 @@ class Main extends Component {
 
         const CommentDetailsPage = ({match}) => {
             return (
-                <CommentDetails selectedArticle={this.state.articles.filter((article) => article.id === parseInt(match.params.articleId, 10))[0]}
-                    comments={this.props.comments.filter((comment) => comment.articleId == parseInt(match.params.articleId,10))}></CommentDetails>
+                <CommentDetails selectedArticle={this.props.articles.filter((article) => article.id === parseInt(match.params.articleId, 10))[0]}
+                    comments={this.props.comments.filter((comment) => comment.articleId == parseInt(match.params.articleId,10))}
+                    addComment={this.props.addComment}></CommentDetails>
             )
         }
 
@@ -76,4 +82,4 @@ class Main extends Component {
     }
 }
 
-export default withRouter(connect(mapStateToProps)(Main));
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Main));

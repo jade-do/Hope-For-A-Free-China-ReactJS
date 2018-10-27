@@ -1,10 +1,15 @@
-import {createStore} from 'redux';
-import { Reducer, initialState } from './reducer'
+import {createStore, combineReducers} from 'redux';
+import { Articles } from './articles';
+import { Comments } from './comments';
+import { HumanRightsMedia } from './humanrightsmedia';
 
 export const ConfigureStore = () => {
     const store = createStore(
-        Reducer, // reducer
-        initialState, // our initialState
+        combineReducers({
+            articles: Articles,
+            comments: Comments,
+            humanRightsMedia: HumanRightsMedia
+        })
     );
 
     return store;
