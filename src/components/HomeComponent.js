@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'reactstrap';
 import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
 import { Loading } from './LoadingComponent';
+import { FadeTransform } from 'react-animation-components';
 
 function RenderCards({articlesList, isLoading, errMess}){
   if (isLoading){
@@ -20,6 +21,11 @@ function RenderCards({articlesList, isLoading, errMess}){
     const myArticlesList = articlesList.map((oneArticle) => {
       return (
         <div className="col-12 col-md m-1">
+        <FadeTransform
+          in
+          transformProps={{
+            exitTransform: 'scale(0.5) translateY(-50%)'
+          }}>
         <Card>
           <CardImg href={oneArticle.link} target="_blank" src={oneArticle.image} alt={oneArticle.title}/>
           <CardBody>
@@ -29,6 +35,7 @@ function RenderCards({articlesList, isLoading, errMess}){
             <Button size="small" color="info" href={oneArticle.link} target="_blank">Learn More</Button>
           </CardBody>
         </Card>
+        </FadeTransform>
         </div>
 
       )

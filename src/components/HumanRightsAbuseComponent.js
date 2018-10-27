@@ -3,6 +3,7 @@ import { Button } from 'reactstrap';
 import {Card, CardImg, CardText, CardBody, CardTitle, 
     CardSubtitle, Carousel, CarouselItem, CarouselControl, 
     CarouselIndicators, CarouselCaption} from 'reactstrap';
+import { Loading } from './LoadingComponent';
   
   class HumanRightsAbuse extends Component {
     constructor(props) {
@@ -42,37 +43,26 @@ import {Card, CardImg, CardText, CardBody, CardTitle,
       }
     
       render() {
-        const { activeIndex } = this.state;
-        const article = this.props.article;
+            const { activeIndex } = this.state;
+
+            const slides = this.props.mediaList.map((item) => {
+                return (
+                  <CarouselItem
+                    onExiting={this.onExiting}
+                    onExited={this.onExited}
+                    key={item.src}
+                  >
+                    <img src={item.image} alt={item.caption} />
+                    <CarouselCaption captionText={item.src} captionHeader={item.caption} />
+                  </CarouselItem>
+                );
+              });
+
+            return (
     
-        const slides = this.props.mediaList.map((item) => {
-          return (
-            <CarouselItem
-              onExiting={this.onExiting}
-              onExited={this.onExited}
-              key={item.src}
-            >
-              <img src={item.image} alt={item.caption} />
-              <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
-            </CarouselItem>
-          );
-        });
-    
-        return (
             <div className="container">
-                <h3>{article.label}</h3>
                 <div className="row">
-                <div className="col-12 col-md m-1">
-                    <Card>
-                        <CardImg href={article.link} target="_blank" src={article.image} alt={article.title} width="200px" height="200px"/>
-                        <CardBody>
-                            <CardTitle>{article.title}</CardTitle>
-                            {article.author ? <CardSubtitle>{article.author}</CardSubtitle> : null}
-                            <CardText>{article.abstract}</CardText>
-                            <Button size="small" color="info" href={article.link} target="_blank">Learn More</Button>
-                        </CardBody>
-                    </Card>                
-                </div>
+
                 <div className="col-12 col-md">
                     <Carousel
                         activeIndex={activeIndex}

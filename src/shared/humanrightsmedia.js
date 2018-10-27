@@ -1,38 +1,32 @@
 export const HUMANRIGHTSMEDIA = [
     {
         id: 0, 
-        image: '/assets/images/human-rights-abuse-on-the-land-of-freedom-1-480px-480px.jpg',
-        caption: 'Amnesty protest against Xi Jinping visit to London',
-        src: 'BBC.com'
+        image: '/assets/images/human-rights-abuse-on-the-land-of-freedom-8.jpg',
+        caption: 'Chinese minority Uyghurs forced to welcome Communist Party into their homes',
+        src: 'CNN.com'
     },
     {
         id: 1, 
-        image: '/assets/images/human-rights-abuse-on-the-land-of-freedom-2-480px-480px.jpg',
-        caption: '',
-        src: 'The Telegraph'
+        image: '/assets/images/human-rights-abuse-on-the-land-of-freedom-9.jpeg',
+        caption: 'Re-education camps in China\'s \'no-rights zone\' for Muslims',
+        src: 'Xinjiang Explainer | SupChina'
     },
     {
         id: 2, 
-        image: '/assets/images/human-rights-abuse-on-the-land-of-freedom-3-480px-480px.jpg',
-        caption: 'Protesters wait outside Parilament buildings for arrival of Chinese Premier Wen Jiabao at on April',
-        src: 'The Epoch Times'
+        image: '/assets/images/human-rights-abuse-on-the-land-of-freedom-14.jpg',
+        caption: 'Painting: The Call of Innocence',
+        src: 'By Falun Gong practitioner and professional artist, Chen Xiaoping, The Art of Zhen Shan Ren'
     },
     {
         id: 3, 
-        image: '/assets/images/human-rights-abuse-on-the-land-of-freedom-4-480px-480px.jpg',
-        caption: 'UN stand up for Tibet',
-        src: 'Unknown'
+        image: '/assets/images/human-rights-abuse-on-the-land-of-freedom-15.jpg',
+        caption: 'A Chinese painter infuses Western technique with her spiritual understanding to elevate the world through art.',
+        src: 'The Art of Zhen Shan Ren'
     },
     {
         id: 4, 
-        image: '/assets/images/human-rights-abuse-on-the-land-of-freedom-5-480px-480px.jpg',
+        image: '/assets/images/human-rights-abuse-on-the-land-of-freedom-5.jpeg',
         caption: 'Street Theatre And Maryan Street At Human Rights Protet',
         src: 'Scoop.co.nz'
-    },
-    {
-        id: 5, 
-        image: '/assets/images/human-rights-abuse-on-the-land-of-freedom-6-480px-480px.jpg',
-        caption: 'Simulation of Persecution of Falun Gong in China\'s Prisons',
-        src: 'trithucvn.net'
     }
 ]

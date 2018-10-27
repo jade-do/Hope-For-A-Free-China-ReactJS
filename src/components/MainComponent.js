@@ -11,6 +11,7 @@ import { addComment, fetchArticles } from '../redux/ActionCreators';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actions } from 'react-redux-form';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 const mapStateToProps = state => {
     return {
@@ -75,13 +76,17 @@ class Main extends Component {
             return ( 
                 <HumanRightsAbuse
                     mediaList={this.props.humanRightsMedia}
-                    article={this.props.articles.filter((article) => article.category === 'human-rights-abuse' )[0]}>
+                    article={this.props.articles.articles.filter((article) => article.category === 'human-rights-abuse' )[0]}
+                    isLoading={this.props.articles.isLoading}
+                    errMess={this.props.articles.errMess}>
                 </HumanRightsAbuse>
             )
         }
         return (
             <div>
                 <Header/>
+                <TransitionGroup>
+                <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
                 <Switch>
                     <Route path="/home" component={HomePage}/>
                     <Route exact path="/communism-in-us-academia" component={CommunismInUSAcademiaPage}></Route>
@@ -90,6 +95,8 @@ class Main extends Component {
                     <Route exact path="/contact-us" component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm}></Contact>}/>
                     <Redirect to="/home"></Redirect>
                 </Switch>
+                </CSSTransition>
+                </TransitionGroup>
                 <Footer/>
             </div>
         )
